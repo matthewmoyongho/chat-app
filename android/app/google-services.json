@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "394422071727",
+    "project_id": "let-us-chat-8a892",
+    "storage_bucket": "let-us-chat-8a892.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394422071727:android:c8c001a206a9f03b66bf5a",
+        "android_client_info": {
+          "package_name": "com.moyongho.let_us_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394422071727-q5t0msvq8jnplkr7q3bliof8jkgh9n05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv6vgxwmwDKnQinv95W3qQ6bx3jhcwvX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394422071727-q5t0msvq8jnplkr7q3bliof8jkgh9n05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

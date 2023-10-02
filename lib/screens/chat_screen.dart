@@ -1,32 +1,54 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:let_us_chat/widgets/chats/messages.dart';
+import 'package:let_us_chat/widgets/chats/new_message.dart';
 
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('chats/UvqA8vEMRO8X37ezHLAV/messages')
-            .snapshots(),
-        builder: (context, streamSnapshot) {
-          final documents = streamSnapshot.data!.docs;
-          return ListView.builder(
-            itemCount: documents.length,
-            itemBuilder: (ctx, index) => Container(
-              padding: EdgeInsets.all(10),
-              child: Text(documents[index]['text']),
-            ),
-          );
-        },
+      appBar: AppBar(
+        title: Text('Let us chat'),
+        actions: [
+          DropdownButton(
+              // dropdownColor: Colors.black,
+
+              icon: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).iconTheme.color,
+              ),
+              items: [
+                DropdownMenuItem(
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.exit_to_app,
+                          color: Colors.black,
+                        ),
+                        Text('Logout')
+                      ],
+                    ),
+                  ),
+                  value: 'logout',
+                )
+              ],
+              onChanged: (value) {
+                if (value == 'logout') {
+                  FirebaseAuth.instance.signOut();
+                }
+              })
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          FirebaseFirestore.instance
-              .collection('chats/UvqA8vEMRO8X37ezHLAV/messages')
-              .add({'text': 'Added from codes'});
-        },
-        child: Icon(Icons.add),
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(
+              child: Messages(),
+            ),
+            NewMessage(),
+          ],
+        ),
       ),
     );
   }
